@@ -11,7 +11,7 @@ export default function Home() {
   );
 
   if (isLoading) return "Loading";
-  if (error) return error.message;
+  if (error) return "Error";
   return (
     <>
       <div className="max-w-4xl mx-auto mt-4">

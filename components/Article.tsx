@@ -4,14 +4,13 @@ import remarkGfm from "remark-gfm";
 const Article = ({ article }) => {
   return (
     <div>
-      <img src={article.cover_image} alt="" />
+      <img src={article.cover_image} alt={article.title} />
       <p className="font-bold text-2xl p-4">{article.title}</p>
       <p className="text-md p-4">
         {" "}
-        <ReactMarkdown
-          children={article.body_markdown}
-          remarkPlugins={[remarkGfm]}
-        />
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {article.body_markdown}
+        </ReactMarkdown>
       </p>
     </div>
   );

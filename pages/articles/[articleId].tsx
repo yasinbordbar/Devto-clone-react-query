@@ -3,20 +3,20 @@ import React from "react";
 import { useQuery } from "react-query";
 import Article from "../../components/Article";
 
-export default function articleId({ articleId }) {
+export default function ArticleId({ ArticleId }) {
   const {
     isLoading,
     error,
     data: article,
   } = useQuery("article", () =>
-    fetch(`https://dev.to/api/articles/${articleId}`).then((res) => res.json())
+    fetch(`https://dev.to/api/articles/${ArticleId}`).then((res) => res.json())
   );
   if (isLoading) return "Loading";
-  if (error) return error.message;
+  if (error) return "Error";
 
   return (
     <>
-      <Link href="/">
+      <Link passHref href="/">
         <div className="text-center">
           <button className="p-3 font-bold text-sm bg-gray-300 items-center my-4">
             back to home page
@@ -30,7 +30,7 @@ export default function articleId({ articleId }) {
   );
 }
 
-articleId.getInitialProps = async ({ query }) => {
-  const { articleId } = query;
-  return { articleId };
+ArticleId.getInitialProps = async ({ query }) => {
+  const { ArticleId } = query;
+  return { ArticleId };
 };
